@@ -1,3 +1,5 @@
+def main():
+    ...
 class Tictactoe:
     def __init__(self) :
         self.board = [" " for x in range(9)]
@@ -40,5 +42,13 @@ class Tictactoe:
             i+=1
         
         #chekcing diagonals
-        
+        if all(b[x] for x in [0,4,8]):
+            return True
+        elif all(b[x] for x in [2,4, 6]):
+            return True
+
+if __name__ =="__main__":
+    main()
+    
+
 
