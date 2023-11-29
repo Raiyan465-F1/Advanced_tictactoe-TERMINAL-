@@ -14,7 +14,7 @@ def PlayGame():
         tttoe.update_board("X", player1)
         tttoe.display_board()
 
-        # Checking for winner
+        # Checking for winner or draw
         if tttoe.check_for_winner():
             print("Player1 wins")
             break
@@ -29,7 +29,7 @@ def PlayGame():
         # Updating board to new move
         tttoe.update_board("O", player2)
         
-        #checking for winner
+        #checking for winner or draw
         if tttoe.check_for_winner():
 
             tttoe.display_board()
