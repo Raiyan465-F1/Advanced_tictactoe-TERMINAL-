@@ -62,7 +62,7 @@ class Tictactoe:
             except AttributeError:
                 print("Invalid move")
 
-            
+    #checking draw
     def check_draw(self):
         return all([not str(x).isnumeric() for x in self.board])
             
