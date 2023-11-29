@@ -63,5 +63,8 @@ class Tictactoe:
                 print("Invalid move")
 
             
-
+    def check_draw(self):
+        return all([not str(x).isnumeric() for x in self.board])
+            
+            
 

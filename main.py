@@ -18,6 +18,10 @@ def PlayGame():
         if tttoe.check_for_winner():
             print("Player1 wins")
             break
+        elif tttoe.check_draw():
+            print("It's a draw")
+            break
+
         # PLAYER 2S MOVE
         print("Player 2's move: O")
         player2:str = tttoe.get_input()
@@ -27,8 +31,12 @@ def PlayGame():
         
         #checking for winner
         if tttoe.check_for_winner():
+
             tttoe.display_board()
             print("Player2 wins")
+            break
+        elif tttoe.check_draw():
+            print("It's a draw")
             break
 
 PlayGame()
