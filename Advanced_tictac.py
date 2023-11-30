@@ -49,15 +49,15 @@ class Tictactoe:
 
             if all([b[x] == self.key for x in range(pos1, pos1+3) if self.ReturnWinnerName(b[x])]):
                 return (True, self.WinnerName)
-            elif all([b[x] == self.key for x in range(pos2, pos2+7, 3)]):
-                return True    
+            elif all([b[x] == self.key for x in range(pos2, pos2+7, 3) if self.ReturnWinnerName(b[x])]):
+                return (True, self.WinnerName)
             i+=1
         
         #chekcing diagonals
-        if all([b[x] == self.key for x in [0,4,8]]):
-            return True
-        elif all([b[x] == self.key for x in [2,4,6]]):
-            return True
+        if all([b[x] == self.key for x in [0,4,8] if self.ReturnWinnerName(b[x])]):
+            return (True, self.WinnerName)
+        elif all([b[x] == self.key for x in [2,4,6] if self.ReturnWinnerName(b[x])]):
+            return (True, self.WinnerName)
             
     
     def get_input(self) -> str:

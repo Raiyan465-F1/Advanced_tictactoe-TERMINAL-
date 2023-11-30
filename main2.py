@@ -6,8 +6,10 @@ import time
 def main():
     greater_tttoe = Tictactoe()
     greater_tttoe.display_board()
-    print("Player 1 choose one sub-table ")
-    player_input = greater_tttoe.get_input()
+    print("player1 is X and player2 is O")
+    print("Player 1(x), choose one sub-table: ")
+
+    player_input:str = greater_tttoe.get_input()
 
 def timdelay(text):
     print(f"Swtich to {text} in.....")
