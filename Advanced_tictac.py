@@ -5,10 +5,10 @@ class Tictactoe:
         self.player1 = "X"
         self.player2 = "O"
         self.key = None
-    
+        self.WinnerName = None
          
-    #printing board
     def display_board(self) -> None:
+        '''Prints the updated board '''
         temp = self.board
         print(
             f"""
@@ -19,15 +19,25 @@ class Tictactoe:
             |{temp[6]}|{temp[7]}|{temp[8]}|"""
         )
 
-    #Updating board according to players move
     def update_board(self, key: str, index: str) -> None:
+
+        '''Updates the board:
+        first arguemnet takes what move(X or O)
+        second arguemnt takes players position on the box (1-9)'''
 
         self.key = key
         self.board[int(index)-1] = key
 
+    def ReturnWinnerName(self, name):
+        self.WinnerName = name
+        return True
+        
+        
     def check_for_winner(self) -> bool:
-        # setting self.board as b so that it's easier to write
-        b = self.board
+        '''Checks if there is a winner and returns True or False'''
+
+        b = self.board #setting self.board as b so it's easier to write
+
         position1 = [0, 3, 6]
         position2 = [0, 1, 2]
         i = 0
@@ -37,8 +47,8 @@ class Tictactoe:
             pos1 = position1[i]
             pos2 = position2[i]
 
-            if all([b[x] == self.key for x in range(pos1, pos1+3)]):
-                return True
+            if all([b[x] == self.key for x in range(pos1, pos1+3) if self.ReturnWinnerName(b[x])]):
+                return (True, self.WinnerName)
             elif all([b[x] == self.key for x in range(pos2, pos2+7, 3)]):
                 return True    
             i+=1
@@ -49,8 +59,9 @@ class Tictactoe:
         elif all([b[x] == self.key for x in [2,4,6]]):
             return True
             
-    #getting and validating input
-    def get_input(self):
+    
+    def get_input(self) -> str:
+        '''Takes and checks the input of a playher and returns it as a sttring'''
         while True:
             try:
                 player = input()
@@ -63,7 +74,8 @@ class Tictactoe:
                 print("Invalid move")
 
     #checking draw
-    def check_draw(self):
+    def check_draw(self) -> None:
+        '''Checks if it's a draw'''
         return all([not str(x).isnumeric() for x in self.board])
             
             
