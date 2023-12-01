@@ -1,4 +1,4 @@
-from main import Playgame
+from childTictactoe import Playgame
 from Advanced_tictac import Tictactoe
 import random
 import time
