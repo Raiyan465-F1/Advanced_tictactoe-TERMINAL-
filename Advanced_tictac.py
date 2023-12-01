@@ -2,13 +2,13 @@
 class Tictactoe:
     def __init__(self) :
         self.board = [x+1 for x in range(9)]
-        self.key = None
-        self.WinnerName = None
-        self.resetlist = [self.board[:], self.key, self.WinnerName]
+        self.key = None #Stores X or O when the board updates
+        self.WinnerName = None # Stores the winner as X(Player1)  or O(Player2)  
+        self.resetlist = [self.board[:], self.key, self.WinnerName] #Stores a list of initial variables so that we can reset the board when it's draw
          
     def display_board(self) -> None:
         '''Prints the updated board '''
-        temp = self.board
+        temp = self.board # Temp variable for easier deploy of self.board
         print(
             f"""
             |{temp[0]}|{temp[1]}|{temp[2]}|
@@ -21,21 +21,23 @@ class Tictactoe:
     def update_board(self, key: str, index: str) -> None:
         '''Updates the board:
         first arguemnet takes what move(X or O)
-        second arguemnt takes players position on the box (1-9)'''
+        second arguemnt takes players position on the box (1-9), the method subtracts 1 when indexing'''
 
         self.key = key
         self.board[int(index)-1] = key
 
     def ReturnWinnerName(self, name):
+        # Made this function as you cant create or return a variable in a comprehensive list but you can check bools
         self.WinnerName = name
         return True
         
         
     def check_for_winner(self) -> bool:
-        '''Checks if there is a winner and returns True or False'''
+        '''Checks if there is a winner and returns a bool if there is a winner and the winner as (X or O)'''
 
         b = self.board #setting self.board as b so it's easier to write
 
+        #positions for rows and columns
         position1 = [0, 3, 6]
         position2 = [0, 1, 2]
         i = 0
@@ -44,9 +46,10 @@ class Tictactoe:
         while i < len(position1):
             pos1 = position1[i]
             pos2 = position2[i]
-
+            #row
             if all([b[x] == self.key for x in range(pos1, pos1+3) if self.ReturnWinnerName(b[x])]):
                 return (True, self.WinnerName)
+            #column
             elif all([b[x] == self.key for x in range(pos2, pos2+7, 3) if self.ReturnWinnerName(b[x])]):
                 return (True, self.WinnerName)
             i+=1
@@ -79,7 +82,8 @@ class Tictactoe:
         '''Checks if it's a draw'''
         return all([not str(x).isnumeric() for x in self.board])
     
-    def ResetOBJ(self):
+    def ResetOBJ(self) -> None:
+        '''Resets the object to it's initial values'''
         self.board, self.key, self.WinnerName = self.resetlist
         
             
