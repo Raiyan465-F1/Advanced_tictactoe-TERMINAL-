@@ -2,10 +2,9 @@
 class Tictactoe:
     def __init__(self) :
         self.board = [x+1 for x in range(9)]
-        self.player1 = "X"
-        self.player2 = "O"
         self.key = None
         self.WinnerName = None
+        self.resetlist = [self.board[:], self.key, self.WinnerName]
          
     def display_board(self) -> None:
         '''Prints the updated board '''
@@ -20,7 +19,6 @@ class Tictactoe:
         )
 
     def update_board(self, key: str, index: str) -> None:
-
         '''Updates the board:
         first arguemnet takes what move(X or O)
         second arguemnt takes players position on the box (1-9)'''
@@ -52,12 +50,15 @@ class Tictactoe:
             elif all([b[x] == self.key for x in range(pos2, pos2+7, 3) if self.ReturnWinnerName(b[x])]):
                 return (True, self.WinnerName)
             i+=1
+
         
         #chekcing diagonals
         if all([b[x] == self.key for x in [0,4,8] if self.ReturnWinnerName(b[x])]):
             return (True, self.WinnerName)
         elif all([b[x] == self.key for x in [2,4,6] if self.ReturnWinnerName(b[x])]):
             return (True, self.WinnerName)
+        else:
+            return (False, False)
             
     
     def get_input(self) -> str:
@@ -74,9 +75,13 @@ class Tictactoe:
                 print("Invalid move")
 
     #checking draw
-    def check_draw(self) -> None:
+    def check_draw(self) -> bool:
         '''Checks if it's a draw'''
         return all([not str(x).isnumeric() for x in self.board])
+    
+    def ResetOBJ(self):
+        self.board, self.key, self.WinnerName = self.resetlist
+        
             
             
 
