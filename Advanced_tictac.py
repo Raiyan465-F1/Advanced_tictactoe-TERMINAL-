@@ -6,11 +6,11 @@ class Tictactoe:
         self.WinnerName = None # Stores the winner as X(Player1)  or O(Player2)  
         self.resetlist = [self.board[:], self.key, self.WinnerName] #Stores a list of initial variables so that we can reset the board when it's draw
          
-    def display_board(self) -> None:
+    def display_board(self,location) -> None:
         '''Prints the updated board '''
         temp = self.board # Temp variable for easier deploy of self.board
         print(
-            f"""
+            f"""{location}:
             |{temp[0]}|{temp[1]}|{temp[2]}|
             -------
             |{temp[3]}|{temp[4]}|{temp[5]}|
@@ -68,7 +68,7 @@ class Tictactoe:
         '''Takes and checks the input of a playher and returns it as a sttring'''
         while True:
             try:
-                player = input()
+                player = input(":")
                 if not self.board[int(player)-1].is_integer():
                     raise TypeError
                 return player
