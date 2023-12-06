@@ -12,7 +12,7 @@ def main():
 
     print("player1 is X and player2 is O")
     time.sleep(0.5)
-    print("Player 1(x), choose one sub-table: ")
+    print("Player 1(x), choose one childbox: ")
 
     greater_tttoe.display_board("Parent")
     player_input = greater_tttoe.get_input() #took input of player 1 
@@ -28,7 +28,7 @@ def main():
         time.sleep(1)
         greater_tttoe.display_board("Parent")
         time.sleep(0.5)
-        print(f"{sub_board_first_play[subwinner]} won subboard, {sub_board_first_play[subwinner]}'s sub table")
+        print(f"{sub_board_first_play[subwinner]} won childbox, {sub_board_first_play[subwinner]} choose next childbox")
 
         player:str = greater_tttoe.get_input()
         timdelay(f'sub_board {player}:')
