@@ -19,7 +19,7 @@ def main():
 
     timdelay(f"sub-board {player_input}") #A time delayed text
 
-    subwinner = Playgame("O") #winner of child tictactoe and the parameter takes the first move(player) of the game.
+    subwinner = Playgame("X") #winner of child tictactoe and the parameter takes the first move(player) of the game.
     greater_tttoe.update_board(subwinner, player_input)
 
     #UPTO HERE FIRST MOVE AND GAME INITIATION HAS BEEN DONE 
@@ -30,13 +30,17 @@ def main():
         time.sleep(0.5)
         print(f"{sub_board_first_play[subwinner]} won childbox, {sub_board_first_play[subwinner]} choose next childbox")
 
+        time.sleep(0.25)
         player:str = greater_tttoe.get_input()
         timdelay(f'sub_board {player}:')
         subwinner = Playgame(subwinner)
         greater_tttoe.update_board(subwinner, player)
 
         if greater_tttoe.check_for_winner()[0]:
-            print(f"{sub_board_first_play[subwinner]} wins")
+            time.sleep(0.3)
+            print("Congratulation")
+            time.sleep(0.25)
+            print(f"{sub_board_first_play[subwinner]} wins the game")
             break
         elif greater_tttoe.check_draw():
             print("It's a draw")

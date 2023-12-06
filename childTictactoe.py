@@ -11,11 +11,11 @@ def Playgame(prevwinner: str) -> str:
         # PLAYER 1S MOVE
         tttoe.display_board("Child")
 
-        print(f"{dict_player[prevwinner]}'s move: {prevwinner}")
+        print(f"{dict_player[second_player]}'s move: {second_player}")
         player1:str = tttoe.get_input()
 
         #Updating board to new move
-        tttoe.update_board(prevwinner, player1)
+        tttoe.update_board(second_player, player1)
         
 
         # Checking for winner or draw
