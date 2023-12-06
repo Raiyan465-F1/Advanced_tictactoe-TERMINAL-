@@ -25,7 +25,7 @@ def Playgame(prevwinner: str) -> str:
             flag, winner = False, False
         if flag:
             tttoe.display_board("Child")
-            print(f"{dict_player[winner]} wins")
+            print(f"{dict_player[winner]} wins childbox")
             return winner
         
         elif tttoe.check_draw():
